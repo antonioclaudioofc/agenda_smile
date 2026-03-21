@@ -1,0 +1,9 @@
+[project]
+name = "Agenda Smile"
+version = "1.0.0"
+description = "Gerenciamento de agendamentos em consultórios odontológicos, permitindo o cadastro de pacientes, dentistas e controle de horários"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "djangorestframework>=3.17.0",
+]
