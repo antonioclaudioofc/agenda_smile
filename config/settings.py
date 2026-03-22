@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'drf_spectacular',
     'apps.accounts',
+    'apps.appointments',
+    'apps.dentists',
+    'apps.patients',
 ]
 
 REST_FRAMEWORK = {
