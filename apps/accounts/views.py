@@ -18,5 +18,6 @@ class MeView(APIView):
     def get(self, request):
         return Response({
             "id": request.user.id,
-            "username": request.user.username
+            "username": request.user.username,
+            "name": request.name
         })

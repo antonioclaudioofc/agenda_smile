@@ -13,7 +13,8 @@ class PatientViewSet(ModelViewSet):
 
     def get_queryset(self):
         queryset = Patient.objects.filter(
-            user=self.request.user).order_by('name')
+            user=self.request.user
+        ).order_by('name')
 
         search = self.request.query_params.get('search')
 
