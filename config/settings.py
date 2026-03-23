@@ -88,6 +88,10 @@ SPECTACULAR_SETTINGS = {
     },
 }
 
+AUTHENTICATION_BACKENDS = [
+    'apps.accounts.backends.CaseInsensitiveModelBackend',
+]
+
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
