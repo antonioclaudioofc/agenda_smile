@@ -5,8 +5,11 @@ description = "Gerenciamento de agendamentos em consultórios odontológicos, pe
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "dj-database-url>=3.1.2",
     "djangorestframework>=3.17.0",
     "djangorestframework-simplejwt>=5.5.1",
     "drf-spectacular>=0.29.0",
     "factory-boy>=3.3.3",
+    "psycopg2-binary>=2.9.11",
+    "python-dotenv>=1.2.2",
 ]
