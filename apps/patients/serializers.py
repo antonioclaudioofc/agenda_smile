@@ -24,6 +24,3 @@ class PatientSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Telefone inválido')
 
         return value
-
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)

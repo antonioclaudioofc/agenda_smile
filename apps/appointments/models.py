@@ -7,25 +7,36 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Appointments(models.Model):
+class Status(models.TextChoices):
+    SCHEDULED = 'scheduled', 'Agendado'
+    COMPLETED = 'completed', 'Concluído'
+    CANCELED = 'canceled', 'Cancelado'
+
+
+class Appointment(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     dentist = models.ForeignKey(Dentist, on_delete=models.CASCADE)
-    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     date = models.DateField()
-    time = models.TimeField()
+    start_time = models.TimeField()
+    end_time = models.TimeField()
 
     status = models.CharField(
         max_length=20,
-        choices=[
-            ('scheduled', 'agendado'),
-            ('completed', 'Concluído'),
-            ('canceled', 'Cancelado')
-        ],
-        default='scheduled'
+        choices=Status.choices,
+        default=Status.SCHEDULED
     )
 
     notes = models.TextField(blank=True)
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     class Meta:
-        unique_together = ('dentist', 'date', 'time')
+        ordering = ['date', 'start_time']
+        verbose_name = 'Appointment'
+        verbose_name_plural = 'Appointments'
+
+    def __str__(self):
+        return f"{self.patient} - {self.date} {self.start_time}"

@@ -9,9 +9,9 @@ class DentistSerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ['id', 'user', 'created_at', 'updated_at']
 
-    def validate(self, data):
-        start_time = data.get('start_time')
-        end_time = data.get('end_time')
+    def validate(self, attrs):
+        start_time = attrs.get('start_time')
+        end_time = attrs.get('end_time')
 
         if start_time is not None and end_time is not None:
             if start_time >= end_time:
@@ -19,4 +19,4 @@ class DentistSerializer(serializers.ModelSerializer):
                     'Hora inicial deve ser menor que a final.'
                 )
 
-        return data
+        return attrs
